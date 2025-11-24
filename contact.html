@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlight Clinic - Contact Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">Starlight Clinic</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        
+        <section class="page-title">
+            <h2>Get In Touch</h2>
+            <p>We're here to help. Reach out to our administrative team via phone, email, or by filling out the form below.</p>
+        </section>
+
+        <hr>
+
+        <div class="contact-grid">
+            
+            <section class="contact-info">
+                <h3>Contact Details & Hours</h3>
+
+                <div class="info-block">
+                    <h4><img src="assets/carbon_location-filled.svg" alt="Address Icon" class="contact-icon"> Clinic Address</h4>
+                    <p>123 Health Avenue, Suite 101<br>Metropolis City, CA 90210</p>
+                    <a href="https://maps.google.com" class="learn-more-button" target="_blank">Get Directions</a>
+                </div>
+
+                <div class="info-block">
+                    <h4><img src="assets/mingcute_phone-fill.svg" alt="Phone Icon" class="contact-icon"> Phone & Email</h4> 
+                    <p>
+                        Appointments: (555) 123-4567<br>
+                        General Inquiries: (555) 123-4568<br>
+                        Email: <a href="mailto:info@starlightclinic.com">info@starlightclinic.com</a>
+                    </p>
+                </div>
+
+                <div class="info-block">
+                    <h4><img src="assets/si_clock-fill.svg" alt="Clock Icon" class="contact-icon"> Operating Hours</h4>
+                    <ul>
+                        <li>Monday - Friday: 8:00 AM – 5:00 PM</li>
+                        <li>Saturday: 9:00 AM – 1:00 PM (Urgent Care Only)</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <section class="contact-form-section">
+                <h3>Send Us a Message</h3>
+                <form class="contact-form" action="/submit-form" method="POST">
+                    
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="phone">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="phone">
+
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject...</option>
+                        <option value="appointment">Schedule/Cancel Appointment</option>
+                        <option value="billing">Billing Inquiry</option>
+                        <option value="general">General Question</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit" class="cta-button">Submit Message</button>
+                </form>
+            </section>
+        </div>
+        
+        <hr>
+
+        <section class="location-map">
+            <h3>Find Us</h3>
+            <div class="map-placeholder">
+                [Placeholder for Interactive Map]
+                <p>Use the "Get Directions" link above for GPS navigation.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Starlight Clinic. All rights reserved. | <a href="contact.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
