@@ -373,7 +373,9 @@ header .container {
 /* The previous .page-title styles are no longer necessary and have been removed/replaced. */
 
 .about-section {
-    padding: 40px 0;
+    padding: 40px 0;
+    /* 💥 FIX: Center the heading and other block-level items */
+    text-align: center; 
 }
 
 .about-section h3 {
@@ -384,11 +386,13 @@ header .container {
 }
 
 .about-section p {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin-bottom: 1.5em;
-    line-height: 1.8;
-    max-width: 800px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.8;
+    max-width: 800px;
+    
+    /* 💥 FIX: Center the paragraph block itself */
+    margin: 0 auto 1.5em auto; 
 }
 
 hr {
@@ -981,3 +985,4 @@ footer a:hover {
         padding: 50px 20px;
     }
 }
+
