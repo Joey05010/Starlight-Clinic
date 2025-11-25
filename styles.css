@@ -867,6 +867,24 @@ footer a:hover {
     border: 1px solid var(--border-color);
 }
 
+/* --- Hamburger Menu Base Styles --- */
+.menu-toggle {
+    display: none; /* Hide on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1010;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+}
 
 /* --- Contact Page Media Query Adjustments --- */
 @media (max-width: 992px) {
@@ -906,28 +924,104 @@ footer a:hover {
     }
 }
 
-/* --- Media Queries for Responsiveness --- */
+/* --- Media Queries for Responsiveness (Hamburger FIX) --- */
 @media (max-width: 768px) {
-    /* Hero Section adjustments (for index.html) */
+    
+    /* 💥 CORE FIX: Ensure container has 20px side padding on small screens */
+    .container {
+        padding: 0 20px;
+    }
+
+    /* 💥 CORE FIX: Ensure Header layout works for logo and toggle */
+    header {
+        /* Revert styles that were trying to manually stack */
+        background-color: rgba(255, 255, 255, 0.95); 
+        backdrop-filter: blur(8px); 
+        -webkit-backdrop-filter: blur(8px); 
+        height: var(--header-height); /* Keep original fixed height */
+    }
+
+    header .container {
+        /* Align logo and toggle side-by-side (row) */
+        flex-direction: row; 
+        justify-content: space-between; /* Push logo left, toggle right */
+        height: 100%; /* Fill the fixed header height */
+        padding: 0 20px;
+    }
+
+    .logo {
+        margin-bottom: 0; /* Remove vertical margin */
+        /* Ensure the logo uses an accessible link tag in HTML (already done in your code) */
+    }
+    
+    .menu-toggle {
+        display: block; /* Show the hamburger button on mobile */
+    }
+
+    /* 💥 FIX: Collapse the navigation list by default on mobile */
+    .navbar {
+        position: absolute;
+        top: var(--header-height); /* Starts right below the fixed header */
+        left: 0;
+        width: 100%;
+        height: 0; /* Hidden by default */
+        overflow: hidden;
+        background-color: var(--white);
+        border-top: 1px solid var(--border-color);
+        transition: height 0.3s ease-in-out;
+        z-index: 999;
+    }
+    
+    /* State when menu is open (requires JS to add 'open' class to .navbar) */
+    .navbar.open {
+        height: 280px; /* Adjust height based on your number of links */
+        overflow-y: auto;
+    }
+
+    .navbar ul {
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links */
+        padding: 20px 0;
+    }
+
+    .navbar ul li {
+        margin: 10px 0;
+    }
+
+    .navbar ul li a {
+        padding: 10px 0;
+        font-size: 1.1rem;
+        /* Remove active/hover underline on mobile links for a cleaner look */
+        &::after { 
+            display: none; 
+        }
+    }
+    
+    /* 💥 Hamburger Icon Transform (to an 'X' when open) */
+    .menu-toggle.open .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.open .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* --- Other Mobile Adjustments --- */
     .hero {
-        /* This already uses padding: 80px 20px; */
         padding: 80px 20px;
         margin-top: 0; 
         padding-top: 80px;
     }
     
-    /* About Page adjustments */
-    .about-hero {
-        padding: 80px 0; /* Reduced padding on mobile */
+    .about-hero, .services-hero, .facilities-hero, .contact-hero {
+        padding: 80px 0;
+        margin-top: 0;
+        padding-top: 80px;
     }
-
-    /* 💥 IMPLEMENTED CHANGE: Revert container padding to 20px on small screens */
-    .container {
-        padding: 0 20px;
-    }
-
-    /* Removed old .page-title media query block */
-    /* .page-title { ... } */
 
     .page-title-content h2 {
         font-size: 2.5rem;
@@ -949,40 +1043,18 @@ footer a:hover {
     .profile-card {
         margin-bottom: 30px;
     }
-
-    header {
-        background-color: var(--white);
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-    }
-
-    header .container {
-        flex-direction: column;
-        height: auto;
-        padding: 10px 20px;
-    }
-
-    .logo {
-        margin-bottom: 10px;
-    }
-
-    .navbar ul {
-        justify-content: center;
-        padding-bottom: 5px;
-    }
-
-    .navbar ul li {
-        margin: 0 10px;
-    }
-
-    .navbar ul li a {
-        padding: 5px 0;
-        font-size: 0.9rem;
-    }
-
+    
     .teaser-grid {
         grid-template-columns: 1fr;
         padding: 50px 20px;
     }
+    
+    .facility-grid {
+        grid-template-columns: 1fr; 
+    }
+    .procedure-image-container .facility-img {
+        height: 250px; 
+    }
 }
+
 
