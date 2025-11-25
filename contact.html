@@ -18,91 +18,104 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="facilities.html">Facilities</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <section class="contact-hero">
+        <div class="container page-title-content">
+            <h2>Get in Touch with Starlight Clinic</h2>
+            <p>We are here to answer your questions and schedule your appointment. Reach out to our friendly staff today.</p>
+        </div>
+    </section>
+
     <main class="container page-content">
         
-        <section class="page-title">
-            <h2>Get In Touch</h2>
-            <p>We're here to help. Reach out to our administrative team via phone, email, or by filling out the form below.</p>
-        </section>
-
-        <hr>
-
-        <div class="contact-grid">
+        <div class="contact-layout">
             
-            <section class="contact-info">
-                <h3>Contact Details & Hours</h3>
+            <section class="contact-form-section">
+                <h3 class="category-title">Send Us a Message</h3>
+                <p class="section-description">Use the form below for general inquiries, feedback, or non-urgent questions.</p>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="general">General Inquiry</option>
+                            <option value="appointment">Appointment Request</option>
+                            <option value="billing">Billing Question</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="cta-button full-width-button">Send Message</button>
+                </form>
+            </section>
 
-                <div class="info-block">
-                    <h4><img src="assets/carbon_location-filled.svg" alt="Address Icon" class="contact-icon"> Clinic Address</h4>
-                    <p>123 Health Avenue, Suite 101<br>Metropolis City, CA 90210</p>
-                    <a href="https://maps.google.com" class="learn-more-button" target="_blank">Get Directions</a>
-                </div>
-
-                <div class="info-block">
-                    <h4><img src="assets/mingcute_phone-fill.svg" alt="Phone Icon" class="contact-icon"> Phone & Email</h4> 
+            <section class="details-section">
+                <h3 class="category-title">Clinic Information</h3>
+                
+                <div class="detail-block">
+                    <h4>
+                        <img src="assets/mingcute_phone-fill.svg" alt="Phone Icon" class="detail-icon">
+                        Contact Details
+                    </h4>
                     <p>
-                        Appointments: (555) 123-4567<br>
-                        General Inquiries: (555) 123-4568<br>
+                        Phone: <a href="tel:+15551234567">(555) 123-4567</a><br>
+                        Fax: (555) 123-4568<br>
                         Email: <a href="mailto:info@starlightclinic.com">info@starlightclinic.com</a>
                     </p>
                 </div>
 
-                <div class="info-block">
-                    <h4><img src="assets/si_clock-fill.svg" alt="Clock Icon" class="contact-icon"> Operating Hours</h4>
-                    <ul>
-                        <li>Monday - Friday: 8:00 AM – 5:00 PM</li>
-                        <li>Saturday: 9:00 AM – 1:00 PM (Urgent Care Only)</li>
-                        <li>Sunday: Closed</li>
-                    </ul>
+                <div class="detail-block">
+                    <h4>
+                        <img src="assets/si_clock-fill.svg" alt="Clock Icon" class="detail-icon">
+                        Operating Hours
+                    </h4>
+                    <p>
+                        Monday - Friday: 8:00 AM – 6:00 PM<br>
+                        Saturday: 9:00 AM – 1:00 PM<br>
+                        Sunday & Holidays: Closed
+                    </p>
                 </div>
-
-            </section>
-
-            <section class="contact-form-section">
-                <h3>Send Us a Message</h3>
-                <form class="contact-form" action="/submit-form" method="POST">
-                    
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required>
-
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                    
-                    <label for="phone">Phone Number (Optional)</label>
-                    <input type="tel" id="phone" name="phone">
-
-                    <label for="subject">Subject</label>
-                    <select id="subject" name="subject" required>
-                        <option value="">Select a subject...</option>
-                        <option value="appointment">Schedule/Cancel Appointment</option>
-                        <option value="billing">Billing Inquiry</option>
-                        <option value="general">General Question</option>
-                        <option value="feedback">Feedback</option>
-                    </select>
-
-                    <label for="message">Your Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-
-                    <button type="submit" class="cta-button">Submit Message</button>
-                </form>
+                
+                <div class="detail-block">
+                    <h4>
+                        <img src="assets/carbon_location-filled.svg" alt="Location Pin Icon" class="detail-icon">
+                        Our Location
+                    </h4>
+                    <p>
+                        123 Starlight Avenue<br>
+                        Medical District, CA 90210
+                    </p>
+                </div>
+                
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        
+                    </div>
+                </div>
+                
             </section>
         </div>
-        
-        <hr>
-
-        <section class="location-map">
-            <h3>Find Us</h3>
-            <div class="map-placeholder">
-                [Placeholder for Interactive Map]
-                <p>Use the "Get Directions" link above for GPS navigation.</p>
-            </div>
-        </section>
 
     </main>
 
