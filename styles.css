@@ -99,6 +99,25 @@ header .container {
     transition: color 0.2s ease, opacity 0.2s ease;
 }
 
+/* --- Hamburger Menu Base Styles --- */
+.menu-toggle {
+    display: none; /* Hide on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1010;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+}
+
 /* 🏆 NAVIGATION ACTIVE LINK STYLES */
 .navbar ul li a.active {
     font-weight: 700; /* Make text bold */
@@ -902,119 +921,86 @@ footer a:hover {
     }
 }
 
-/* --- Media Queries for Responsiveness --- */
+/* --- Media Queries for Responsiveness (Hamburger FIX) --- */
 @media (max-width: 768px) {
-    /* Hero Section adjustments (for index.html) */
-    .hero {
+    /* 💥 CORE FIX: Show the hamburger button and stack logo/toggle */
+    header .container {
+        /* Revert to row for logo and toggle */
+        flex-direction: row; 
+        justify-content: space-between; /* Space logo and toggle */
+        align-items: center;
+        height: var(--header-height); /* Keep original header height */
+    }
+
+    .logo {
+        margin-bottom: 0; 
+    }
+    
+    .menu-toggle {
+        display: block; /* Show on mobile */
+    }
+
+    /* 💥 FIX: Collapse the navigation list by default on mobile */
+    .navbar {
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: 0; /* Hidden by default */
+        overflow: hidden;
+        background-color: var(--white);
+        border-top: 1px solid var(--border-color);
+        transition: height 0.3s ease-in-out;
+        z-index: 999;
+    }
+    
+    /* State when menu is open (requires JS to add 'open' class to .navbar) */
+    .navbar.open {
+        height: 250px; /* Adjust height based on your number of links */
+        overflow-y: auto;
+    }
+
+    .navbar ul {
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links */
+        padding: 20px 0;
+    }
+
+    .navbar ul li {
+        margin: 10px 0;
+    }
+
+    .navbar ul li a {
+        padding: 10px 0;
+        font-size: 1.1rem;
+        /* Remove active/hover underline on mobile links for a cleaner look */
+        &::after { display: none; }
+    }
+    
+    /* 💥 Hamburger Icon Transform (to an 'X' when open) */
+    .menu-toggle.open .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.open .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* ... Keep other mobile styles (hero, container, etc.) ... */
+    
+    .container { padding: 0 20px; }
+    .teaser-grid { grid-template-columns: 1fr; padding: 50px 20px; }
+    .team-profile { flex-direction: column; align-items: center; }
+    .profile-card { margin-bottom: 30px; }
+    .hero, .about-hero, .services-hero, .facilities-hero, .contact-hero {
         padding: 80px 20px;
         margin-top: 0; 
         padding-top: 80px;
     }
-    
-    /* About Page adjustments */
-    .about-hero {
-        padding: 80px 0; 
-    }
-
-    /* 💥 FIX: Ensure container has 20px side padding on small screens */
-    .container {
-        padding: 0 20px;
-    }
-
-    .page-title-content h2 {
-        font-size: 2.5rem;
-    }
-
-    .page-title-content p {
-        font-size: 1.2rem;
-    }
-
-    .about-section {
-        padding: 20px 0;
-    }
-
-    .team-profile {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .profile-card {
-        margin-bottom: 30px;
-    }
-
-    header {
-        background-color: var(--white);
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        height: auto; /* Allow header to expand vertically */
-    }
-
-    header .container {
-        /* ✅ FIX: Stack Logo on top of Navbar */
-        flex-direction: column; 
-        height: auto;
-        padding: 10px 20px;
-        align-items: center; /* Center everything */
-    }
-
-    .logo {
-        /* Pushes navigation down */
-        margin-bottom: 10px; 
-        /* The logo is now centered with align-items: center on the container */
-    }
-    
-    /* 🛠️ FIX: Make the navbar horizontal and scrollable, and make it full width */
-    .navbar {
-        width: 100%; 
-        overflow-x: auto; /* Allows horizontal scrolling */
-        -webkit-overflow-scrolling: touch;
-        /* Hides the scrollbar but keeps scrolling functionality on some browsers */
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-    }
-    
-    /* Hides scrollbar for Webkit browsers (Chrome, Safari) */
-    .navbar::-webkit-scrollbar {
-        display: none;
-    }
-
-    .navbar ul {
-        /* Prevents wrapping and ensures all links stay on one line */
-        flex-wrap: nowrap; 
-        justify-content: center;
-        padding-bottom: 5px;
-    }
-
-    .navbar ul li {
-        margin: 0 10px;
-        flex-shrink: 0; /* Prevents links from shrinking and getting cut off */
-    }
-
-    .navbar ul li a {
-        padding: 5px 0;
-        font-size: 0.9rem;
-    }
-
-    .teaser-grid {
-        grid-template-columns: 1fr;
-        padding: 50px 20px;
-    }
-
-    /* Additional fixes for other pages inside the 768px query */
-    .facilities-hero, .contact-hero, .services-hero {
-        padding: 80px 0;
-        margin-top: 0;
-        padding-top: 80px;
-    }
-    .facility-area, .service-category {
-        padding: 40px 0;
-    }
-    .facility-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    .procedure-image-container .facility-img {
-        height: 250px; 
-    }
 }
+
 
