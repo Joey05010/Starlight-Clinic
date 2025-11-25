@@ -46,3 +46,28 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Starlight Clinic Homepage JS Loaded.");
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Select the button and the navigation element
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navbar = document.querySelector('.navbar');
+
+    if (menuToggle && navbar) {
+        // Add an event listener to the button
+        menuToggle.addEventListener('click', function () {
+            // Toggle the 'open' class on the navigation (to show/hide the menu)
+            navbar.classList.toggle('open');
+            
+            // Toggle the 'open' class on the button (to transform the icon into an 'X')
+            menuToggle.classList.toggle('open');
+        });
+        
+        // OPTIONAL: Close the menu if a link is clicked (useful for single-page sites or when navigating)
+        const navLinks = navbar.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('open');
+                menuToggle.classList.remove('open');
+            });
+        });
+    }
+});
