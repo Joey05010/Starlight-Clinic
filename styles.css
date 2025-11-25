@@ -904,69 +904,69 @@ footer a:hover {
 
 /* --- Media Queries for Responsiveness --- */
 @media (max-width: 768px) {
-    /* Hero Section adjustments (for index.html) */
-    .hero {
-        padding: 80px 20px;
-        margin-top: 0; 
-        padding-top: 80px;
-    }
-    
-    /* About Page adjustments */
-    .about-hero {
-        padding: 80px 0; /* Reduced padding on mobile */
-    }
-
-    /* 💥 CORE FIX: Revert container padding to 20px on small screens */
-    .container {
-        padding: 0 20px;
-    }
-
-    .page-title-content h2 {
-        font-size: 2.5rem;
-    }
-
-    .page-title-content p {
-        font-size: 1.2rem;
-    }
-
-    .about-section {
-        padding: 20px 0;
-    }
-
-    .team-profile {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .profile-card {
-        margin-bottom: 30px;
-    }
-
-    header {
-        background-color: var(--white);
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        height: auto; /* Allow header to expand vertically */
-    }
-
-    header .container {
-        /* ✅ FIX: Force stack vertically: Logo on top, then Navbar */
-        flex-direction: column; 
-        height: auto;
-        padding: 10px 20px;
-    }
-
-    .logo {
-        /* Pushes navigation down */
-        margin-bottom: 10px; 
-        /* Ensure logo is centered when stacked */
-        align-self: center; 
-    }
+    /* Hero Section adjustments (for index.html) */
+    .hero {
+        padding: 80px 20px;
+        margin-top: 0; 
+        padding-top: 80px;
+    }
     
-    /* 🛠️ FIX: Make the navbar horizontal and scrollable */
+    /* About Page adjustments */
+    .about-hero {
+        padding: 80px 0; 
+    }
+
+    /* 💥 FIX: Ensure container has 20px side padding on small screens */
+    .container {
+        padding: 0 20px;
+    }
+
+    .page-title-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .page-title-content p {
+        font-size: 1.2rem;
+    }
+
+    .about-section {
+        padding: 20px 0;
+    }
+
+    .team-profile {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-card {
+        margin-bottom: 30px;
+    }
+
+    header {
+        background-color: var(--white);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        height: auto; /* Allow header to expand vertically */
+    }
+
+    header .container {
+        /* ✅ FIX: Stack Logo on top of Navbar */
+        flex-direction: column; 
+        height: auto;
+        padding: 10px 20px;
+        align-items: center; /* Center everything */
+    }
+
+    .logo {
+        /* Pushes navigation down */
+        margin-bottom: 10px; 
+        /* The logo is now centered with align-items: center on the container */
+    }
+    
+    /* 🛠️ FIX: Make the navbar horizontal and scrollable, and make it full width */
     .navbar {
-        width: 100%; /* Must take full width for horizontal scrolling */
-        overflow-x: auto;
+        width: 100%; 
+        overflow-x: auto; /* Allows horizontal scrolling */
         -webkit-overflow-scrolling: touch;
         /* Hides the scrollbar but keeps scrolling functionality on some browsers */
         -ms-overflow-style: none; /* IE and Edge */
@@ -978,25 +978,43 @@ footer a:hover {
         display: none;
     }
 
-    .navbar ul {
-        /* Prevents wrapping and enables center alignment of links */
+    .navbar ul {
+        /* Prevents wrapping and ensures all links stay on one line */
         flex-wrap: nowrap; 
-        justify-content: center;
-        padding-bottom: 5px;
-    }
+        justify-content: center;
+        padding-bottom: 5px;
+    }
 
-    .navbar ul li {
-        margin: 0 10px;
-        flex-shrink: 0; /* Ensures items don't shrink */
-    }
+    .navbar ul li {
+        margin: 0 10px;
+        flex-shrink: 0; /* Prevents links from shrinking and getting cut off */
+    }
 
-    .navbar ul li a {
-        padding: 5px 0;
-        font-size: 0.9rem;
-    }
+    .navbar ul li a {
+        padding: 5px 0;
+        font-size: 0.9rem;
+    }
 
-    .teaser-grid {
-        grid-template-columns: 1fr;
-        padding: 50px 20px;
-    }
+    .teaser-grid {
+        grid-template-columns: 1fr;
+        padding: 50px 20px;
+    }
+
+    /* Additional fixes for other pages inside the 768px query */
+    .facilities-hero, .contact-hero, .services-hero {
+        padding: 80px 0;
+        margin-top: 0;
+        padding-top: 80px;
+    }
+    .facility-area, .service-category {
+        padding: 40px 0;
+    }
+    .facility-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .procedure-image-container .facility-img {
+        height: 250px; 
+    }
 }
+
