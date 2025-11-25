@@ -904,26 +904,75 @@ footer a:hover {
 
 /* --- Media Queries for Responsiveness --- */
 @media (max-width: 768px) {
-    /* Hero Section adjustments (for index.html) */
-    .hero {
-        /* This already uses padding: 80px 20px; */
-        padding: 80px 20px;
-        margin-top: 0; 
-        padding-top: 80px;
-    }
-    
-    /* About Page adjustments */
-    .about-hero {
-        padding: 80px 0; /* Reduced padding on mobile */
-    }
-
-    /* 💥 IMPLEMENTED CHANGE: Revert container padding to 20px on small screens */
+    /* 💥 FIX 1: Ensure container padding is correct on small screens */
     .container {
         padding: 0 20px;
     }
 
-    /* Removed old .page-title media query block */
-    /* .page-title { ... } */
+    /* 💥 FIX 2: Revert header container to side-by-side layout (or use a dedicated mobile menu) */
+    header {
+        /* Remove blur on mobile for performance/simplicity */
+        background-color: var(--white);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        height: auto; /* Let content define height */
+    }
+
+    header .container {
+        /* Keep logo and menu side-by-side */
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: center;
+        /* Padding applied to header container to align content properly */
+        padding: 10px 20px; 
+    }
+    
+    /* Ensure the logo uses the available space and doesn't get cut off */
+    .logo {
+        font-size: 1.2rem; /* Slightly smaller logo for tight mobile headers */
+        white-space: nowrap; /* Prevents text wrap */
+        margin-bottom: 0; /* Remove margin from previous column layout */
+    }
+
+    /* 💥 FIX 3: Make Navbar horizontally scrollable */
+    .navbar {
+        /* Allow the navigation to scroll horizontally if links overflow */
+        overflow-x: auto; 
+        -webkit-overflow-scrolling: touch;
+        
+        /* Ensures the navbar items line up horizontally */
+        flex-grow: 1;
+        max-width: 70%; /* Give it space next to the logo */
+    }
+
+    .navbar ul {
+        /* Prevent ul from wrapping */
+        flex-wrap: nowrap; 
+        justify-content: flex-end; /* Push links to the right */
+        padding-bottom: 5px; /* Keep this for spacing */
+    }
+
+    .navbar ul li {
+        margin-left: 15px; /* Reduce spacing between links */
+        flex-shrink: 0; /* Ensures list items don't shrink */
+    }
+
+    .navbar ul li a {
+        padding: 5px 0;
+        font-size: 0.9rem;
+    }
+    
+    /* Other mobile adjustments */
+    .hero, .about-hero, .services-hero, .facilities-hero, .contact-hero {
+        margin-top: 0; 
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    
+    .teaser-grid {
+        grid-template-columns: 1fr;
+        padding: 50px 20px;
+    }
 
     .page-title-content h2 {
         font-size: 2.5rem;
@@ -945,39 +994,20 @@ footer a:hover {
     .profile-card {
         margin-bottom: 30px;
     }
-
-    header {
-        background-color: var(--white);
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
+    
+    /* Revert .container change */
+    /* .container is handled at the top of this block */
+    
+    /* Other sections */
+    .facility-area {
+        padding: 40px 0;
     }
-
-    header .container {
-        flex-direction: column;
-        height: auto;
-        padding: 10px 20px;
-    }
-
-    .logo {
-        margin-bottom: 10px;
-    }
-
-    .navbar ul {
-        justify-content: center;
-        padding-bottom: 5px;
-    }
-
-    .navbar ul li {
-        margin: 0 10px;
-    }
-
-    .navbar ul li a {
-        padding: 5px 0;
-        font-size: 0.9rem;
-    }
-
-    .teaser-grid {
+    .facility-grid {
         grid-template-columns: 1fr;
-        padding: 50px 20px;
+        gap: 30px;
+    }
+    .procedure-image-container .facility-img {
+        height: 250px; 
     }
 }
+
